@@ -3,6 +3,8 @@ import { success, failure } from "./libs/response-lib";
 
 export async function main(event, context) {
   const data = JSON.parse(event.body);
+  console.log('data', data);
+  console.log('event', event);
   const params = {
     TableName: process.env.tableName,
     // 'Key' defines the partition key and sort key of the item to be updated
@@ -29,6 +31,7 @@ export async function main(event, context) {
     const result = await dynamoDbLib.call("update", params);
     return success({ status: true, result: result });
   } catch (e) {
-    return failure({ status: false });
+    console.log(e);
+    return failure({ status: false, code: e.code });
   }
 }

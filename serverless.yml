@@ -38,10 +38,9 @@ provider:
         - dynamodb:Scan
         - dynamodb:GetItem
         - dynamodb:PutItem
-        - dynaomdb:UpdateItem
+        - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:eu-central-1:*:*"
-
 functions:
   create:
     handler: create.main
